@@ -9,7 +9,7 @@ class Item:
     agency: str
     current_balance: float
     
-    def __init__(self, name: str=None,  account : float=None, agency: str=None, current_balance: float = None):
+    def __init__(self, name: str=None,  account : str=None, agency: str=None, current_balance: float = None):
         
         validation_name = self.validate_name(name)
         if validation_name[0] is False:
@@ -56,11 +56,12 @@ class Item:
     @staticmethod
     def validate_agency(agency: str) -> Tuple [bool, str]:
         if agency is None:
-            return(False, "Account is required")
+            return(False, "Agency is required")
         if type(agency)!= str:
             return(False, "Agency must be a string")
         if len(agency)!= 6:
             return (False, "Agency must have 6 characters")
+        return (True, "")
     
     
     @staticmethod
@@ -71,6 +72,7 @@ class Item:
             return(False, "Current Balance must be a float")
         if current_balance < 0:
             return(False, "Current Balance must be 0 or a positive number")
+        return (True, "")
     
     def to_dict(self):
        return {
