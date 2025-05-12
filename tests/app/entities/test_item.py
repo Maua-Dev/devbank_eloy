@@ -14,7 +14,7 @@ class Test_Item:
         
     def test_item_dict(self):
         item = Item("test", "0123", "01234-5", 2000.0)
-        assert item.to_dict() == {'name': 'test', 'account': '0123', 'agency': '01234-5', 'current balance': 2000.0}
+        assert item.to_dict() == {"name": "test", "account": "0123", "agency": "01234-5", "current_balance": 2000.0}
     
     def test_item_name_is_none(self):
         with pytest.raises(ParamNotValidated):

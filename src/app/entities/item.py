@@ -59,7 +59,7 @@ class Item:
             return(False, "Agency is required")
         if type(agency)!= str:
             return(False, "Agency must be a string")
-        if len(agency)!= 6:
+        if len(agency)!= 7:
             return (False, "Agency must have 6 characters")
         return (True, "")
     
