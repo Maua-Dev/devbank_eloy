@@ -23,9 +23,9 @@ class ItemRepositoryMock(IItemRepository):
         return self.items.get(item_id, None)
     
     def create_item(self, item: Item, item_id: int) -> Item:
-        
         self.items[item_id] = item
         return item
+        
     
     def delete_item(self, item_id: int) -> Item:
         item = self.items.pop(item_id, None)
@@ -36,7 +36,6 @@ class ItemRepositoryMock(IItemRepository):
         item = self.items.get(item_id, None)
         if item is None:
             return None
-        
         if name is not None:
             item.name = name
         if account is not None:
