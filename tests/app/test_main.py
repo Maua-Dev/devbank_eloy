@@ -1,9 +1,9 @@
 from fastapi.exceptions import HTTPException
 import pytest
-from src.app.entities.item import Item
+from src.app.entities.User import Item
 from src.app.enums.item_type_enum import ItemTypeEnum
 from src.app.main import get_all_items, get_item, create_item, delete_item, update_item
-from src.app.repo.item_repository_mock import ItemRepositoryMock
+from src.app.repo.user_repository_mock import ItemRepositoryMock
 
 class Test_Main:
     def test_get_all_items(self):

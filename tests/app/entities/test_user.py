@@ -1,0 +1,67 @@
+import pytest
+from src.app.entities.User import User
+from src.app.errors.entity_errors import ParamNotValidated
+
+
+class Test_Item:
+    def test_item(self):
+        user = User("test", "0123", "01234-5", 2000.0)
+        assert User.name == "test"
+        assert User.account == "0123"
+        assert User.agency == "01234-5"
+        assert User.current_balance == 2000.0
+        
+    def test_item_dict(self):
+        user = User("test", "0123", "01234-5", 2000.0)
+        assert user.to_dict() == {"name": "test", "account": "0123", "agency": "01234-5", "current_balance": 2000.0}
+    
+    def test_item_name_is_none(self):
+        with pytest.raises(ParamNotValidated):
+            User(account = '0123', agency = '01234-5', current_balance=2000.0)
+   
+    def test_item_name_is_not_string(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = 20, account='0123',agency = '01234-5', current_balance = 2000.0)
+    
+    def test_item_name_is_too_short(self):
+        with pytest.raises(ParamNotValidated):
+            User(name="Vi", account = "0123", agency = "01234-5", current_balance = 2000.0) 
+    
+    def test_item_account_is_none(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", agency = "01234-5", current_balance = 2000.0 )      
+    
+    def test_item_account_is_not_str(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = 250 ,agency = "01234-5", current_balance = 2000.0 )   
+    
+    def test_item_account_is_too_short(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "012" ,agency = "01234-5", current_balance = 2000.0 )     
+    
+    def test_item_agency_is_none(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" , current_balance = 2000.0 )
+    
+    def test_item_agency_is_not_str(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" ,agency = 12345, current_balance = 2000.0 )
+    
+    def test_item_agency_is_too_short(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" ,agency = "0123", current_balance = 2000.0 )
+
+    def test_item_currentbalance_is_none(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" ,agency = "0123")
+    
+    def test_item_currentbalance_is_negative(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" ,agency = "0123", current_balance = -1 )
+    
+    def test_item_currentbalance_is_not_float(self):
+        with pytest.raises(ParamNotValidated):
+            User(name = "Test", account = "0123" ,agency = "0123", current_balance = "2000.0" )
+           
+    
+    
