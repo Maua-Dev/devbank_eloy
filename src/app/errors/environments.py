@@ -38,7 +38,7 @@ class Environments:
     def get_user_repo() -> IUserRepository:
         if Environments.get_envs().stage == STAGE.TEST:
             from .repo.user_repository_mock import UserRepositoryMock
-            return UserRepositoryMock()
+            return UserRepositoryMock
         # use "elif" conditional to add other stages
         else:
             raise EnvironmentNotFound("STAGE")

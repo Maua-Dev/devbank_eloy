@@ -1,6 +1,5 @@
 from typing import Dict, Optional, List
 
-from ..enums.item_type_enum import ItemTypeEnum
 from ..entities.User import User
 from .user_repository_interface import IUserRepository
 

@@ -21,7 +21,7 @@ class Test_UserRepositoryMock:
         repo = UserRepositoryMock()
         len_before = len(repo.users)
         user = User(name="test", account="0000", agency="00000-0", current_balance=2000.0)
-        repo.create_user(user=user, user_id=0)
+        repo.create_item(user=user, user_id=0)
         len_after = len(repo.users)
         assert len_after == len_before + 1
         assert repo.users.get(0) == user
@@ -44,7 +44,7 @@ class Test_UserRepositoryMock:
     def test_update_item(self):
         repo = UserRepositoryMock()
         user = User(name="test", account="0000", agency="00000-0", current_balance=2000.0)
-        user_updated = repo.update_user(user_id=1, name=user.name, account=user.account, agency=user.agency, current_balance=user.current_balance)
+        user_updated = repo.update_item(user_id=1, name=user.name, account=user.account, agency=user.agency, current_balance=user.current_balance)
         print(repo.users.get(1))
         assert user_updated == repo.users.get(1)
         

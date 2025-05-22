@@ -1,6 +1,5 @@
 from typing import Tuple
 from ..errors.entity_errors import ParamNotValidated
-from ..enums.item_type_enum import ItemTypeEnum
 
 
 class User:

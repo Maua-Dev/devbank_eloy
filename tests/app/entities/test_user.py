@@ -6,10 +6,10 @@ from src.app.errors.entity_errors import ParamNotValidated
 class Test_Item:
     def test_item(self):
         user = User("test", "0123", "01234-5", 2000.0)
-        assert User.name == "test"
-        assert User.account == "0123"
-        assert User.agency == "01234-5"
-        assert User.current_balance == 2000.0
+        assert user.name == "test"
+        assert user.account == "0123"
+        assert user.agency == "01234-5"
+        assert user.current_balance == 2000.0
         
     def test_item_dict(self):
         user = User("test", "0123", "01234-5", 2000.0)
